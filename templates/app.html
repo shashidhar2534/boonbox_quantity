@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boon Box Prediction</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+
+    
+
+</head>
+
+
+<body>
+    <h1 >BoonBox Quantity Prediction</h1>
+    <div class="img center"></div>
+        <form action="http://127.0.0.1:5000//submit" method='post'>
+            <label for="StoreBranch">storebranch</label>
+            <br>
+                <select name="StoreBranch" id="uiStoreBranches">
+                    <option>arohan me32113</option>
+                    <option>arohan me32114</option>
+                </select>
+            <br>
+            <label for="Product">Product</label><br>
+            <select name="Product" id="uiProductName">
+                <option>back bag</option>
+                <option>nokia 216</option>
+            </select>
+            <br>
+            <label for="Month">month</label><br>
+            <input type="text" id="uimonth" name="month"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+<script>
+
+function onPageLoad() {
+  console.log( "document loaded" );
+  var url1 = "http://127.0.0.1:5000/get_store_branches";
+  var url2="http://127.0.0.1:5000/product";
+
+  $.get(url1,function(data, status) {
+      console.log("got response for get_store_branches request");
+      if(data) {
+          var storebranches = data.storebranches;
+
+          var uiStoreBranches = document.getElementById("uiStoreBranches");
+          $('#uiStoreBranches').empty();
+          for(var i in storebranches) {
+              var opt = new Option(storebranches[i]);
+              $('#uiStoreBranches').append(opt);
+          }
+
+      }
+  });
+   $.get(url2,function(data, status) {
+      console.log("got response for get_store_branches request");
+      if(data) {
+          var products = data.products;
+
+          var uiProductName = document.getElementById("uiProductName");
+          $('#uiProductName').empty();
+          for(var i in products) {
+              var opt = new Option(products[i]);
+              $('#uiProductName').append(opt);
+          }
+
+      }
+  });
+}
+
+window.onload = onPageLoad;
+
+</script>
+
+<STYLE>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+
+h1{
+	font-size: 50px;
+	color:red;
+	text-align: center;
+
+
+}
+
+
+label {
+
+    color: white;
+    display: block;
+    padding: 30px;
+    margin: 1px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.img {
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6lvmWwRkrM6XtE611VnAAXbd9n_LtNwlnVQ&usqp=CAU");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-size:80%;
+    position: fixed;
+    width: 100%;
+    height: 500px;
+    margin: 0 0 0 175px;
+
+  z-index: -1;
+
+}
+
+select {
+    width: 150px;
+    position: relative;
+}
+
+
+
+.result{
+		background: #dcd686;
+		width: 76%;
+		border: 0;
+		margin: 25px 0 10px;
+		box-sizing: border-box;
+		font-size: 15px;
+		height: 35px;
+		text-align: center;
+}
+
+
+
+
+body {
+  display:table-cell;
+  text-align:center;
+  vertical-align:middle;
+
+  text-color:white;
+  width:40%;
+
+}
+input[type=submit] {
+  width:100px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 10px 10px 10px;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+}
+input[type=text]{
+width:150px
+}
+</STYLE>
+
+</html>
+
+
+
