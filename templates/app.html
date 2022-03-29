@@ -12,7 +12,7 @@
 <body>
     <h1 >BoonBox Quantity Prediction</h1>
     <div class="img center"></div>
-        <form action="http://127.0.0.1:5000//submit" method='post'>
+        <form action="https://boonboxquantityprediction.herokuapp.com//submit" method='post'>
             <label for="StoreBranch">storebranch</label>
             <br>
                 <select name="StoreBranch" id="uiStoreBranches">
@@ -35,8 +35,8 @@
 
 function onPageLoad() {
   console.log( "document loaded" );
-  var url1 = "http://127.0.0.1:5000/get_store_branches";
-  var url2="http://127.0.0.1:5000/product";
+  var url1 = "https://boonboxquantityprediction.herokuapp.com/get_store_branches";
+  var url2="https://boonboxquantityprediction.herokuapp.com/product";
 
   $.get(url1,function(data, status) {
       console.log("got response for get_store_branches request");
